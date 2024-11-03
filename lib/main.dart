@@ -1,6 +1,20 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: 'AIzaSyDBuiYS-_rz_CSFQNOXOthFleAUhAISF0g',
+            appId: '1:910455028725:android:2aa6d3697518455f357ebc',
+            messagingSenderId: '910455028725',
+            projectId: 'fir-practice-3c832'));
+  } else {
+    await Firebase.initializeApp();
+  }
   runApp(const MyApp());
 }
 
